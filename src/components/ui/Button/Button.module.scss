@@ -35,4 +35,26 @@
       border-color: transparent;
     }
   }
+
+  &--outline {
+    font-family: v.$font-family-secondary;
+    background-color: transparent;
+    border-color: v.$color-white;
+    color: v.$color-white;
+
+    &:hover {
+      background-color: v.$color-white;
+      color: v.$color-black;
+    }
+  }
+
+  &--shop {
+    background-color: v.$color-petrol;
+    color: v.$color-white;
+
+    &:hover {
+      background-color: color.scale(v.$color-petrol, $lightness: -5%);
+    }
+  }
+
 }

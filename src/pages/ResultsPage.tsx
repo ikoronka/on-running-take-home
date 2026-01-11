@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
+import { Button } from '../components/ui/Button/Button.tsx';
 
 const ResultsPage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,13 @@ const ResultsPage = () => {
           ))}
         </ol>
       )}
-      <button onClick={handleRestart}>Restart</button>
+      <Button
+        variant="shop"
+        fullWidth={true}
+      >
+        Shop Now
+      </Button>
+      <Button onClick={handleRestart}>Restart</Button>
     </>
   );
 };

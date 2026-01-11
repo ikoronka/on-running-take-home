@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 
+import { Button } from '../components/ui/Button/Button.tsx';
+
 const QuizPage = () => {
   const navigate = useNavigate();
   const { currentQuestion, isLoading, handleAnswer, isFinished } = useQuiz();
@@ -36,9 +38,13 @@ const QuizPage = () => {
       <h2>{currentQuestion.copy}</h2>
       <ul>
         {currentQuestion.answers.map((answer) => (
-          <li key={answer.copy}>
-            <button onClick={() => handleAnswer(answer)}>{answer.copy}</button>
-          </li>
+          <Button
+            key={answer.copy}
+            onClick={() => handleAnswer(answer)}
+            variant="outline"
+          >
+            {answer.copy}
+          </Button>
         ))}
       </ul>
     </>
