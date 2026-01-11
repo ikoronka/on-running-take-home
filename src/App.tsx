@@ -20,6 +20,7 @@ function App() {
   return (
     <>
       <div>
+        <h1>Test of functionality</h1>
         <p>Step: {currentStep}</p>
         <p>Total Steps: {totalSteps}</p>
         <p>Is Finished: {isFinished ? 'Yes' : 'No'}</p>

@@ -31,7 +31,8 @@ export const useShoeFinder = (data: IQuizData) => {
     });
 
     // Redirect to next question or finish quiz
-    if (answer.nextQuestion !== null) {
+    // @ts-ignore
+    if (answer.nextQuestion !== '') {
       setCurrentQuestionId(answer.nextQuestion);
     } else {
       setIsFinished(true);
