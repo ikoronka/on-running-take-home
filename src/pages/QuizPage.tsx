@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
-
-import { Button } from '../components/ui/Button/Button.tsx';
 import { Loader } from '../components/ui/Loader/Loader.tsx';
+import { QuizCard } from '../components/quiz/QuizCard/QuizCard.tsx';
 
 const QuizPage = () => {
   const navigate = useNavigate();
-  const { currentQuestion, isLoading, handleAnswer, isFinished } = useQuiz();
+  const { currentQuestion, isLoading, isFinished, handleAnswer } = useQuiz();
 
   useEffect(() => {
     if (isFinished) {
@@ -31,18 +30,10 @@ const QuizPage = () => {
         <Loader />
       ) : (
         <>
-          <h2>{currentQuestion.copy}</h2>
-          <ul>
-            {currentQuestion.answers.map((answer) => (
-              <Button
-                key={answer.copy}
-                onClick={() => handleAnswer(answer)}
-                variant="outline"
-              >
-                {answer.copy}
-              </Button>
-            ))}
-          </ul>
+          <QuizCard
+            question={currentQuestion}
+            onAnswerSelect={handleAnswer}
+          />
         </>
       )}
     </>
