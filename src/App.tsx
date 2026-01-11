@@ -1,60 +1,24 @@
-import rawData from './data/data.json';
-import type { IQuizData } from './types';
-import { useShoeFinder } from './hooks/useShoeFinder';
-import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { QuizProvider } from './context/QuizContext';
 
-// sanity check to ensure data is correctly typed
-const data = rawData as IQuizData;
+import LandingPage from './pages/LandingPage.tsx';
+import QuizPage from './pages/QuizPage.tsx';
+import ResultsPage from './pages/ResultsPage.tsx';
 
 function App() {
-  const { currentQuestion, isFinished, isLoading, handleAnswer, results, ratings } =
-    useShoeFinder(data);
-
   return (
-    <>
-      <div>
-        <h1>Test of functionality</h1>
-        <p>Is Finished: {isFinished ? 'Yes' : 'No'}</p>
-        <p>Current Question: {currentQuestion ? currentQuestion.copy : 'None'}</p>
-        <p>Ratings: {JSON.stringify(ratings)}</p>
-      </div>
-      <hr />
-      {isFinished ? (
-        <div>
-          <h2>results</h2>
-          <ol>
-            {results.map((shoe) => (
-              <li key={shoe.id}>
-                {shoe.name} - Score: {ratings[shoe.id]}
-              </li>
-            ))}
-          </ol>
-        </div>
-      ) : isLoading ? (
-        <div>
-          <h2>Loading results...</h2>
-        </div>
-      ) : (
-        currentQuestion && (
-          <div>
-            <h2>{currentQuestion.copy}</h2>
-            <ul>
-              {currentQuestion.answers.map((answer, index) => (
-                <li key={index}>
-                  <button onClick={() => handleAnswer(answer)}>{answer.copy}</button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      )}
-      <hr />
-      <h2>Raw Data Check</h2>
-      <ul>
-        <li>{data.shoes[0].name}</li>
-        <li>{data.questions[0].copy}</li>
-      </ul>
-    </>
+    <BrowserRouter>
+      <QuizProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </QuizProvider>
+    </BrowserRouter>
   );
 }
 
