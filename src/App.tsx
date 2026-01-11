@@ -7,25 +7,15 @@ import './App.css';
 const data = rawData as IQuizData;
 
 function App() {
-  const {
-    currentQuestion,
-    currentStep,
-    totalSteps,
-    isFinished,
-    handleAnswer,
-    getSortedShoes,
-    ratings,
-  } = useShoeFinder(data);
+  const { currentQuestion, isFinished, isLoading, handleAnswer, results, ratings } =
+    useShoeFinder(data);
 
   return (
     <>
       <div>
         <h1>Test of functionality</h1>
-        <p>Step: {currentStep}</p>
-        <p>Total Steps: {totalSteps}</p>
         <p>Is Finished: {isFinished ? 'Yes' : 'No'}</p>
         <p>Current Question: {currentQuestion ? currentQuestion.copy : 'None'}</p>
-        <p>Top Shoe: {getSortedShoes()[0]?.name || 'None'}</p>
         <p>Ratings: {JSON.stringify(ratings)}</p>
       </div>
       <hr />
@@ -33,12 +23,16 @@ function App() {
         <div>
           <h2>results</h2>
           <ol>
-            {getSortedShoes().map((shoe) => (
+            {results.map((shoe) => (
               <li key={shoe.id}>
                 {shoe.name} - Score: {ratings[shoe.id]}
               </li>
             ))}
           </ol>
+        </div>
+      ) : isLoading ? (
+        <div>
+          <h2>Loading results...</h2>
         </div>
       ) : (
         currentQuestion && (

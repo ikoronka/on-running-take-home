@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { type IAnswer, type IQuizData, type IShoe, type Rating } from '../types.ts';
+import { useMemo, useState } from 'react';
+import { type IAnswer, type IQuizData, type Rating } from '../types.ts';
 
 export const useShoeFinder = (data: IQuizData) => {
   // Initialize ratings for each shoe to zero
@@ -13,6 +13,7 @@ export const useShoeFinder = (data: IQuizData) => {
 
   const [currentQuestionId, setCurrentQuestionId] = useState<number>(0);
   const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const currentQuestion = data.questions.find((q) => q.id === currentQuestionId) || null;
 
@@ -31,26 +32,35 @@ export const useShoeFinder = (data: IQuizData) => {
     });
 
     // Redirect to next question or finish quiz
-    // @ts-ignore
     if (answer.nextQuestion !== '') {
       setCurrentQuestionId(answer.nextQuestion);
     } else {
-      setIsFinished(true);
+      setIsLoading(true);
+
+      // Simulate loading time before showing results
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsFinished(true);
+      }, 1500);
     }
   };
 
-  // Sort shoes by rating descending
-  const getSortedShoes = (): IShoe[] => {
+  // Memoized calculation of results to avoid unnecessary computations
+  const results = useMemo(() => {
+    if (!isFinished) {
+      return [];
+    }
+
+    console.log('Calculating Results...');
     return [...data.shoes].sort((a, b) => ratings[b.id] - ratings[a.id]);
-  };
+  }, [isFinished, ratings, data.shoes]);
 
   return {
     currentQuestion,
-    currentStep: currentQuestionId + 1,
-    totalSteps: data.questions.length,
     isFinished,
+    isLoading,
     handleAnswer,
-    getSortedShoes,
+    results,
     ratings,
   };
 };
