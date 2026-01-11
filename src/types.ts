@@ -9,7 +9,7 @@ export interface IShoe {
 
 export interface IAnswer {
   copy: string;
-  nextQuestion: number | null;
+  nextQuestion: number | '';
   ratingIncrease: Record<string, number>;
 }
 
