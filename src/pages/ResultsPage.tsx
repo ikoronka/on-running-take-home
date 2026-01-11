@@ -3,12 +3,11 @@ import { useQuiz } from '../context/QuizContext';
 
 const ResultsPage = () => {
   const navigate = useNavigate();
-  const { results, ratings } = useQuiz();
+  const { results, ratings, resetQuiz } = useQuiz();
 
   const handleRestart = () => {
-    navigate('/');
-    // TODO: replace with soft reset
-    window.location.reload();
+    resetQuiz();
+    navigate('/quiz');
   };
 
   return (

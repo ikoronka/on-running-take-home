@@ -3,14 +3,15 @@ import { type IAnswer, type IQuizData, type Rating } from '../types.ts';
 
 export const useShoeFinder = (data: IQuizData) => {
   // Initialize ratings for each shoe to zero
-  const [ratings, setRatings] = useState<Rating>(() => {
-    const initialRatings: Rating = {};
+  const getInitialRatings = () => {
+    const initial: Rating = {};
     data.shoes.forEach((shoe) => {
-      initialRatings[shoe.id] = 0;
+      initial[shoe.id] = 0;
     });
-    return initialRatings;
-  });
+    return initial;
+  };
 
+  const [ratings, setRatings] = useState<Rating>(getInitialRatings());
   const [currentQuestionId, setCurrentQuestionId] = useState<number>(0);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -55,6 +56,14 @@ export const useShoeFinder = (data: IQuizData) => {
     return [...data.shoes].sort((a, b) => ratings[b.id] - ratings[a.id]);
   }, [isFinished, ratings, data.shoes]);
 
+  // soft reset of the quiz state
+  const resetQuiz = () => {
+    setRatings(getInitialRatings());
+    setCurrentQuestionId(0);
+    setIsFinished(false);
+    setIsLoading(false);
+  };
+
   return {
     currentQuestion,
     isFinished,
@@ -62,5 +71,6 @@ export const useShoeFinder = (data: IQuizData) => {
     handleAnswer,
     results,
     ratings,
+    resetQuiz,
   };
 };
