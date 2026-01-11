@@ -1,3 +1,4 @@
+// Mapping of shoe IDs to their score increment
 export type Rating = Record<string, number>;
 
 export interface IShoe {
@@ -8,7 +9,7 @@ export interface IShoe {
 
 export interface IAnswer {
   copy: string;
-  nextQuestion: string | number;
+  nextQuestion: number | null;
   ratingIncrease: Record<string, number>;
 }
 

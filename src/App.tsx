@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import rawData from './data/data.json';
 import type { IQuizData } from './types';
 import './App.css';
