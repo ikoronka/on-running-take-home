@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 
 import { Button } from '../components/ui/Button/Button.tsx';
+import { Loader } from '../components/ui/Loader/Loader.tsx';
 
 const QuizPage = () => {
   const navigate = useNavigate();
@@ -13,15 +14,6 @@ const QuizPage = () => {
       navigate('/results');
     }
   }, [isFinished, navigate]);
-
-  if (isLoading) {
-    return (
-      <>
-        <h1>Quiz</h1>
-        <p>Loading question...</p>
-      </>
-    );
-  }
 
   if (!currentQuestion) {
     return (
@@ -35,18 +27,24 @@ const QuizPage = () => {
   return (
     <>
       <h1>Quiz</h1>
-      <h2>{currentQuestion.copy}</h2>
-      <ul>
-        {currentQuestion.answers.map((answer) => (
-          <Button
-            key={answer.copy}
-            onClick={() => handleAnswer(answer)}
-            variant="outline"
-          >
-            {answer.copy}
-          </Button>
-        ))}
-      </ul>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <h2>{currentQuestion.copy}</h2>
+          <ul>
+            {currentQuestion.answers.map((answer) => (
+              <Button
+                key={answer.copy}
+                onClick={() => handleAnswer(answer)}
+                variant="outline"
+              >
+                {answer.copy}
+              </Button>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   );
 };
