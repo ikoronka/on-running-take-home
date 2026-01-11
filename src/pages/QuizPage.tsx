@@ -35,8 +35,8 @@ const QuizPage = () => {
       <h1>Quiz</h1>
       <h2>{currentQuestion.copy}</h2>
       <ul>
-        {currentQuestion.answers.map((answer, idx) => (
-          <li key={idx}>
+        {currentQuestion.answers.map((answer) => (
+          <li key={answer.copy}>
             <button onClick={() => handleAnswer(answer)}>{answer.copy}</button>
           </li>
         ))}

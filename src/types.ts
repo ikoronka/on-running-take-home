@@ -8,6 +8,7 @@ export interface IShoe {
 }
 
 export interface IAnswer {
+  id?: number;
   copy: string;
   nextQuestion: number | '';
   ratingIncrease: Record<string, number>;
