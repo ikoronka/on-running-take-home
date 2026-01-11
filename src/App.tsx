@@ -1,7 +1,7 @@
-import { useState } from "react";
-import rawData from "./data/data.json";
-import type { IQuizData } from "./types";
-import "./App.css";
+import { useState } from 'react';
+import rawData from './data/data.json';
+import type { IQuizData } from './types';
+import './App.css';
 
 function App() {
   // sanity check to ensure data is correctly typed
