@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../components/ui/Button/Button.tsx';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const LandingPage = () => {
   return (
     <>
       <h1>Landing</h1>
-      <button onClick={handleStart}>Start Quiz</button>
+      <Button onClick={handleStart}>Start Quiz</Button>
     </>
   );
 };

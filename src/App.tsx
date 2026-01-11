@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { QuizProvider } from './context/QuizContext';
+import '@fontsource/source-serif-4';
 
 import LandingPage from './pages/LandingPage.tsx';
 import QuizPage from './pages/QuizPage.tsx';

@@ -1,0 +1,38 @@
+@use '../../../styles/variables' as v;
+@use "sass:color";
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1em 2rem;
+  font-family: v.$font-family-base;
+  font-weight: v.$font-weight-medium;
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+
+  transition: v.$transition-base;
+
+  // accessibility
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // --- Variants ---
+  &--primary {
+    background-color: v.$color-black;
+    color: v.$color-white;
+
+    &:hover:not(:disabled) {
+      background-color: color.scale(v.$color-black, $lightness: 15%);
+      border-color: transparent;
+    }
+  }
+}
