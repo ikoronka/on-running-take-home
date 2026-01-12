@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 import { Button } from '../components/ui/Button/Button.tsx';
+import { ShoeCard } from '../components/results/ShoeCard/ShoeCard';
+import { Header } from '../components/layout/Header/Header.tsx';
 
 const ResultsPage = () => {
   const navigate = useNavigate();
-  const { results, ratings, resetQuiz } = useQuiz();
+  const { results, resetQuiz } = useQuiz();
 
   const handleRestart = () => {
     resetQuiz();
@@ -13,25 +15,27 @@ const ResultsPage = () => {
 
   return (
     <>
-      <h1>Results</h1>
+      <Header />
       {results.length === 0 ? (
         <p>No results yet.</p>
       ) : (
-        <ol>
+        <>
           {results.map((shoe) => (
-            <li key={shoe.id}>
-              {shoe.name} - Score: {ratings[shoe.id] ?? 0}
-            </li>
+            <div key={shoe.id}>
+              <ShoeCard
+                shoe={shoe}
+                winner={false}
+              />
+            </div>
           ))}
-        </ol>
+        </>
       )}
       <Button
-        variant="shop"
-        fullWidth={true}
+        onClick={handleRestart}
+        variant={'text'}
       >
-        Shop Now
+        Restart
       </Button>
-      <Button onClick={handleRestart}>Restart</Button>
     </>
   );
 };

@@ -11,7 +11,7 @@ const LandingPage = () => {
   return (
     <>
       <h1>Landing</h1>
-      <Button onClick={handleStart}>Start Quiz</Button>
+      <Button onClick={handleStart}>Try On Trial</Button>
     </>
   );
 };

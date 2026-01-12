@@ -1,0 +1,69 @@
+@use '/src/styles/variables' as v;
+
+.card {
+  display: flex;
+  background-color: v.$color-white;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__imageWrapper {
+    padding: v.$spacing-lg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply; // for potential jpgs
+  }
+
+  &__content {
+    padding: v.$spacing-lg;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-sm;
+  }
+
+  &__title {
+    font-family: v.$font-family-base;
+    font-size: 1.5rem;
+    color: v.$color-black;
+    margin-bottom: v.$spacing-sm;
+  }
+
+  &__description {
+    font-family: v.$font-family-secondary;
+    font-size: 0.9rem;
+    color: rgb(v.$color-grey-light, 0.6);
+    line-height: 1.5;
+    margin-bottom: v.$spacing-sm;
+  }
+
+  &__variants {
+    display: flex;
+    gap: v.$spacing-sm;
+    margin-bottom: v.$spacing-md;
+  }
+
+  &__variant {
+    width: 20px;
+    height: 20px;
+    border: 1px solid v.$color-black;
+  }
+
+  &__action {
+    margin-top: auto;
+  }
+}
