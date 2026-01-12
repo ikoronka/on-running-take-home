@@ -15,5 +15,8 @@ $spacing-sm: 0.5rem;
 $spacing-md: 1rem;
 $spacing-lg: 2rem;
 
+/* --- Layout --- */
+$header-height: 72px; // Fixed header height (40px logo + 2rem padding)
+
 /* --- Transitions --- */
 $transition-base: all 0.3s ease;

@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 import { Button } from '../components/ui/Button/Button.tsx';
 import { ShoeCard } from '../components/results/ShoeCard/ShoeCard';
-import { Header } from '../components/layout/Header/Header.tsx';
 
 const ResultsPage = () => {
   const navigate = useNavigate();
@@ -15,7 +14,6 @@ const ResultsPage = () => {
 
   return (
     <>
-      <Header />
       {results.length === 0 ? (
         <p>No results yet.</p>
       ) : (
