@@ -10,7 +10,7 @@
   transition: background-color 0.5s ease, color 0.3s ease;
 
   &--dark {
-    background-color: v.$color-black;
+    background-color: v.$color-grey-light;
     color: v.$color-white;
   }
 

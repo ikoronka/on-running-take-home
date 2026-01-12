@@ -3,7 +3,7 @@ import { QuizProvider } from './context/QuizContext';
 import '@fontsource/source-serif-4';
 
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
-import QuizPage from './pages/QuizPage.tsx';
+import QuizPage from './pages/QuizPage/QuizPage.tsx';
 import ResultsPage from './pages/ResultsPage.tsx';
 import { MainLayout } from './components/layout/MainLayout/MainLayout.tsx';
 
