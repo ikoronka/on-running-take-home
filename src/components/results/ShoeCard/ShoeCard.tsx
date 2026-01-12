@@ -4,14 +4,14 @@ import styles from './ShoeCard.module.scss';
 
 interface ShoeCardProps {
   shoe: IShoe;
-  winner?: boolean;
+  isWinner?: boolean;
 }
 
-export const ShoeCard = ({ shoe, winner = false }: ShoeCardProps) => {
+export const ShoeCard = ({ shoe, isWinner = false }: ShoeCardProps) => {
   const imageSrc = `/src/assets/${shoe.name}.png`;
 
   return (
-    <div className={`${styles.card} ${winner ? styles['card--winner'] : ''}`}>
+    <div className={`${styles.card} ${isWinner ? styles['card--winner'] : ''}`}>
       <img
         src={imageSrc}
         alt={shoe.name}
