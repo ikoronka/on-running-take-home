@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# On running Shoe Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+live demo available at <a href="https://on.ikoronka.com/" target="_blank">on.ikoronka.com</a>
 
-Currently, two official plugins are available:
+A responsive, interactive React application that provides a "shoe finder" quiz focused on On Running shoes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+# Getting Started
+To run this project locally:
+1. Clone the repository
+```sh
+  git clone git@github.com:ikoronka/on-running-take-home.git
+```
+2. Install dependencies
+```sh
+  pnpm install
+```
+3. Run the development server
+ ```sh
+  pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# Project Overview
+**Key Features**
+- *Quiz flow* - smooth transitions, animations and state retention.
+- *Scoring Logic* - calculates matches based on attributed weighting through the provided `data.json`, accounting for draws.
+- *Responsive Design* - mobile-first using scss modules and flexbox.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tech Stack
+- *Core:* - React (Hooks, Context API), TypeScript, Vite
+- *Styling:* - SCSS Modules, CSS Variables, BEM naming convention
+- *Routing:* - React Router DOM
+- *State Management* - Custom Hooks (`useShoeFinder`), React Context
+- *Package Manager* pnpm (Fast, disk space efficient)
+- *Deployment:* - Netlify (CI/CD)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Architecture
+- **Separation of concerns**
+    - The logic is decoupled from the UI. The `useShoeFinder` hook optimally calculates scores, sorting, filtering and picking subsequent winners while components focus only on presentation.
+- **Scalable component library**
+    - UI elements are built as reusable components following the atomic design pattern (Button, ShoeCard, Loader, ColorPicker) with typed props ensuring type safety.
+ 
+## Project Management & Planning
+- [**Issue board**](https://github.com/users/ikoronka/projects/2)
+    - Simple board where I typed all the main issues and their description in the beggining to better map out workflow and priorities
+- [**PRs**](https://github.com/ikoronka/on-running-take-home/pulls?q=is%3Apr+is%3Aclosed)
+    - Each issue was worked on its own feature branch and to merge it back to main a PR had to be opened
+- **Code Review**
+    - To ensure code quality in a solo environment, I used Github Copilot to simulate peer review. I critically evaluated its feedback for refactoring opportunities before merging.
