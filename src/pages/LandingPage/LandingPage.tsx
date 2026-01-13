@@ -1,13 +1,9 @@
 import { Button } from '../../components/ui/Button/Button.tsx';
-import backgroundImage from '/src/assets/Background Image Start Screen.png';
 import styles from './LandingPage.module.scss';
 
 const LandingPage = () => {
   return (
-    <div
-      className={styles.page}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <div className={styles.page}>
       <div className={styles.content}>
         <h1 className={styles.title}>Take the quiz and try your first pair!</h1>
 

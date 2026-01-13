@@ -11,10 +11,17 @@
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 120%;
+  background-image:
+          linear-gradient(to top, v.$color-white 0%, rgba(255, 255, 255, 0) 15%),
+          url('/src/assets/Background Image Start Screen.png');
 
   @media (min-width: 768px) {
     background-size: 90%;
     background-position: 20vw 100%;
+  }
+  @media (min-width: 1024px) {
+    background-size: 60%;
+    background-position: 50vw 100%;
   }
 }
 
@@ -25,7 +32,7 @@
   position: relative;
   z-index: 10;
   // Account for fixed overlay header + additional spacing
-  padding: calc(#{v.$header-height} + 10vh) 6% 0 6%;
+  padding: calc(#{v.$header-height} + 20vh) 6% 0 6%;
   max-width: 600px; // limit width on desktop
 }
 
