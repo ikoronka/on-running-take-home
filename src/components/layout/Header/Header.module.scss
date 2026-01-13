@@ -11,12 +11,11 @@
   justify-content: space-between;
   align-items: center;
   padding: v.$spacing-md v.$spacing-lg;
-
+  box-sizing: border-box;
   background-color: v.$color-white;
   color: v.$color-black;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  // --- ELEMENTS ---
   &__nav, &__placeholder {
     flex: 1;
   }
@@ -52,17 +51,15 @@
   }
 
   &__logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     justify-content: center;
 
     a {
-      color: inherit;
-      text-decoration: none;
-      display: block;
+      display: flex;
+      align-items: center;
       height: 40px;
+      text-decoration: none;
+      color: inherit;
     }
 
     img {
