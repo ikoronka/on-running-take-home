@@ -1,0 +1,75 @@
+@use '/src/styles/variables' as v;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__infoWrapper {
+    background-color: v.$color-white;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+
+    padding-top: 16px;
+    margin-bottom: v.$spacing-md;
+  }
+
+  &__imageWrapper {
+    padding: v.$spacing-lg;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply; // for potential jpgs
+  }
+
+  &__content {
+    padding: v.$spacing-lg;
+    margin: v.$spacing-lg;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-sm;
+  }
+
+  &__title {
+    font-family: v.$font-family-base;
+    font-size: 1.5rem;
+    color: v.$color-black;
+    margin-bottom: v.$spacing-sm;
+  }
+
+  &__description {
+    font-family: v.$font-family-secondary;
+    font-size: 1rem;
+    color: rgb(v.$color-grey-light, 0.6);
+    line-height: 1.5;
+  }
+
+  &__meta {
+    font-family: v.$font-family-secondary;
+    margin-bottom: v.$spacing-md;
+  }
+
+  &__action {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+  }
+}

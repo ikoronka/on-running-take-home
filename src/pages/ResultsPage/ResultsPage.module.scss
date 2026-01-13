@@ -1,0 +1,98 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+
+  padding-top: 140px;
+  padding-bottom: v.$spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: v.$spacing-lg;
+  padding: 0 12%;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  @media (min-width: 768px) {
+    text-align: center;
+  }
+}
+
+.title {
+  font-family: v.$font-family-base;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: v.$color-black;
+  margin-bottom: v.$spacing-md;
+    @media (min-width: 768px) {
+        font-size: 3.5rem;
+    }
+}
+
+.subtitle {
+  @include m.text-caption;
+  line-height: 1.5;
+}
+
+.winnerSection {
+  width: 100%;
+  margin-bottom: 6rem;
+
+  // possibility of more winners
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+  }
+}
+
+.othersSection {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-family: v.$font-family-base;
+  font-size: 2rem;
+  color: v.$color-black;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-lg;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 2rem;
+  }
+}
+
+footer {
+  margin-top: v.$spacing-xl;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

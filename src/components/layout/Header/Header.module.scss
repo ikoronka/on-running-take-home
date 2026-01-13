@@ -1,0 +1,71 @@
+@use '../../../styles/variables' as v;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: v.$spacing-md v.$spacing-lg;
+  box-sizing: border-box;
+  background-color: v.$color-white;
+  color: v.$color-black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  &__nav, &__placeholder {
+    flex: 1;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: v.$color-black;
+    border-radius: 2px;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+}

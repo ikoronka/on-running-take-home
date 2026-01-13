@@ -1,0 +1,8 @@
+@use 'variables' as v;
+@use '@fontsource/source-serif-4';
+
+body {
+  font-family: v.$font-family-base;
+  margin: 0;
+}
+

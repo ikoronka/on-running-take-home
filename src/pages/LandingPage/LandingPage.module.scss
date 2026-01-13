@@ -1,0 +1,52 @@
+@use '/src/styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: v.$color-white;
+  position: relative;
+  overflow: hidden;
+
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 120%;
+  background-image:
+          linear-gradient(to top, v.$color-white 0%, rgba(255, 255, 255, 0) 15%),
+          url('/public/Background Image Start Screen.png');
+
+  @media (min-width: 768px) {
+    background-size: 90%;
+    background-position: 20vw 100%;
+  }
+  @media (min-width: 1024px) {
+    background-size: 60%;
+    background-position: 50vw 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+  // Account for fixed overlay header + additional spacing
+  padding: calc(#{v.$header-height} + 20vh) 6% 0 6%;
+  max-width: 600px; // limit width on desktop
+}
+
+.title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #111;
+  max-width: 25ch; // character limit for better readability
+  word-wrap: break-word;
+}
+
+.subtitle {
+  @include m.text-caption;
+  margin-left: 4px;
+  margin-top: 20px;
+}

@@ -1,0 +1,81 @@
+@use '../../../styles/variables' as v;
+@use "sass:color";
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
+
+  padding: 1em 2rem;
+  font-family: v.$font-family-base;
+  font-weight: v.$font-weight-medium;
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+
+  transition: v.$transition-base;
+
+  // accessibility
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // --- Variants ---
+  &--primary {
+    background-color: v.$color-black;
+    color: v.$color-white;
+    font-size: 1.25rem;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 10px 15px -4px rgba(0, 0, 0, 0.2);
+
+    &:hover:not(:disabled) {
+      background-color: color.scale(v.$color-black, $lightness: 15%);
+      border-color: transparent;
+    }
+  }
+
+  &--outline {
+    font-family: v.$font-family-secondary;
+    background-color: transparent;
+    border-color: v.$color-white;
+    border-style: solid;
+    color: v.$color-white;
+
+    &:hover {
+      background-color: v.$color-white;
+      color: v.$color-black;
+    }
+  }
+
+  &--shop {
+    background-color: v.$color-petrol;
+    color: v.$color-white;
+    padding: 1rem 4rem;
+
+    &:hover {
+      background-color: color.scale(v.$color-petrol, $lightness: -30%);
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    padding: 0.5em 1rem;
+
+    &:hover:not(:disabled) {
+      opacity: 0.7;
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+}

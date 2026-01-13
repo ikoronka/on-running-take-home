@@ -46,16 +46,6 @@ export const useShoeFinder = (data: IQuizData) => {
     }
   };
 
-  // Memoized calculation of results to avoid unnecessary computations
-  const results = useMemo(() => {
-    if (!isFinished) {
-      return [];
-    }
-
-    console.log('Calculating Results...');
-    return [...data.shoes].sort((a, b) => ratings[b.id] - ratings[a.id]);
-  }, [isFinished, ratings, data.shoes]);
-
   // soft reset of the quiz state
   const resetQuiz = () => {
     setRatings(getInitialRatings());
@@ -64,13 +54,38 @@ export const useShoeFinder = (data: IQuizData) => {
     setIsLoading(false);
   };
 
+  // Memoized calculation of winners and others for results page
+  const { winners, others } = useMemo(() => {
+    if (!isFinished) {
+      return { winners: [], others: [] };
+    }
+
+    const sortedShoes = data.shoes
+      .map((shoe) => ({
+        ...shoe,
+        rating: ratings[shoe.id] || 0,
+      }))
+      .sort((a, b) => b.rating - a.rating);
+
+    if (sortedShoes.length === 0) {
+      return { winners: [], others: [] };
+    }
+
+    const maxScore = sortedShoes[0].rating;
+
+    const winnersList = sortedShoes.filter((s) => s.rating === maxScore);
+    const othersList = sortedShoes.filter((s) => s.rating < maxScore);
+
+    return { winners: winnersList, others: othersList };
+  }, [isFinished, ratings, data.shoes]);
+
   return {
     currentQuestion,
     isFinished,
     isLoading,
     handleAnswer,
-    results,
-    ratings,
+    winners,
+    others,
     resetQuiz,
   };
 };

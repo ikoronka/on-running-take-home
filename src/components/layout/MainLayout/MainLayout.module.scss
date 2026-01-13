@@ -1,0 +1,29 @@
+@use '/src/styles/variables' as v;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white;
+  color: v.$color-black;
+  // transition between pages
+  transition: background-color 0.5s ease, color 0.3s ease;
+
+  &--dark {
+    background-color: v.$color-grey-light;
+    color: v.$color-white;
+  }
+
+  &__content {
+    // Allow content to start at viewport top (header overlays)
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+
+    // Each page is responsible for its own top padding
+    // to account for the fixed header overlay
+  }
+}
