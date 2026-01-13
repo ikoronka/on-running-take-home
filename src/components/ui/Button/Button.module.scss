@@ -56,9 +56,10 @@
   &--shop {
     background-color: v.$color-petrol;
     color: v.$color-white;
+    padding: 1rem 4rem;
 
     &:hover {
-      background-color: color.scale(v.$color-petrol, $lightness: -5%);
+      background-color: color.scale(v.$color-petrol, $lightness: -30%);
     }
   }
 
@@ -66,7 +67,6 @@
     background-color: transparent;
     border: none;
     color: inherit;
-    text-decoration: underline;
     padding: 0.5em 1rem;
 
     &:hover:not(:disabled) {

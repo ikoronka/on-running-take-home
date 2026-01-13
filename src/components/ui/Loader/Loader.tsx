@@ -8,7 +8,7 @@ export const Loader = () => {
         src={loader}
         alt="Loading"
       />
-      <p>We're running to get your results.</p>
+      <p className={styles.title}>We're running to get your results.</p>
     </div>
   );
 };

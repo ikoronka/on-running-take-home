@@ -16,6 +16,12 @@
   animation: fadeIn 0.3s ease-out;
 }
 
+.title {
+  font-size: 2rem;
+  margin-top: v.$spacing-lg;
+  color: rgba(v.$color-white, 0.3);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

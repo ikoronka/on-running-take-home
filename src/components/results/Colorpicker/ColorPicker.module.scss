@@ -1,0 +1,28 @@
+@use '/src/styles/variables' as v;
+
+.picker {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.swatch {
+  width: 14px;
+  height: 24px;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0;
+  border-radius: 0;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &--active {
+    box-shadow:
+            0 0 0 2px v.$color-white,
+            0 0 0 3px v.$color-black;
+    z-index: 1;
+  }
+}

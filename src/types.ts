@@ -25,3 +25,10 @@ export interface IQuizData {
   questions: IQuestion[];
   shoes: IShoe[];
 }
+
+// interface representing shoe color variants
+export interface IVariant {
+  id: string;
+  name: string;
+  colors: [string, string];
+}
