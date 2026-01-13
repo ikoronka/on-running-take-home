@@ -67,6 +67,10 @@ export const useShoeFinder = (data: IQuizData) => {
       }))
       .sort((a, b) => b.rating - a.rating);
 
+    if (sortedShoes.length === 0) {
+      return { winners: [], others: [] };
+    }
+
     const maxScore = sortedShoes[0].rating;
 
     const winnersList = sortedShoes.filter((s) => s.rating === maxScore);

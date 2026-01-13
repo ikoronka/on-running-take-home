@@ -13,7 +13,7 @@
   background-size: 120%;
   background-image:
           linear-gradient(to top, v.$color-white 0%, rgba(255, 255, 255, 0) 15%),
-          url('/src/assets/Background Image Start Screen.png');
+          url('/public/Background Image Start Screen.png');
 
   @media (min-width: 768px) {
     background-size: 90%;

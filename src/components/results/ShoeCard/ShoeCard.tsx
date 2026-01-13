@@ -13,27 +13,27 @@ const HARDCODED_VARIANTS: IVariant[] = [
   {
     id: '1',
     name: 'Neon & Grey',
-    colors: ['#D4E157', '#9E9E9E'], // Neonově zelená / Šedá
+    colors: ['#D4E157', '#9E9E9E'],
   },
   {
     id: '2',
     name: 'Flare & Graphite',
-    colors: ['#FF7043', '#424242'], // Oranžová / Tmavě šedá
+    colors: ['#FF7043', '#424242'],
   },
   {
     id: '3',
     name: 'Sky & Navy',
-    colors: ['#4FC3F7', '#0D47A1'], // Světle modrá / Tmavě modrá
+    colors: ['#4FC3F7', '#0D47A1'],
   },
   {
     id: '4',
     name: 'Lavender & Plum',
-    colors: ['#CE93D8', '#4A148C'], // Světle fialová / Tmavě fialová
+    colors: ['#CE93D8', '#4A148C'],
   },
 ];
 
 export const ShoeCard = ({ shoe, isWinner = false }: ShoeCardProps) => {
-  const imageSrc = `/src/assets/${shoe.name}.png`;
+  const imageSrc = `/shoes/${shoe.name}.png`;
   const [selectedVariant, setSelectedVariant] = useState<IVariant>(HARDCODED_VARIANTS[0]);
 
   return (
@@ -42,10 +42,10 @@ export const ShoeCard = ({ shoe, isWinner = false }: ShoeCardProps) => {
         <img
           src={imageSrc}
           alt={shoe.name}
-          className="styles.card__image"
+          className={styles.card__image}
           // In case of missing image
           onError={(e) => {
-            (e.target as HTMLImageElement).src = '/assets/on-logo.png';
+            (e.target as HTMLImageElement).src = '../../../assets/on-logo.png';
           }}
         />
         <div className={styles.card__content}>
